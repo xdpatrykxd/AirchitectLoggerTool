@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Hioki Log reader POC - Web Serial API</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mx-auto mt-5">
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-md-12">
+        <h4 class="mb-4">🖹 Read Hioki log files using the browser (POC Test non react)</h4>
+        <div class="form-group">
+          <p id="info">Steps:
+          <ul>
+            <li>Turn on Hioki device (press on button for 2sec)</li>
+            <li>Turn on bluetooth of Hioki device (Quick press the on button)</li>
+            <li>Turn on your computer's bluetooth</li>
+            <li>Search for the Hioki device (name should be something like LR8515....) and try to connect it to your
+              computer using the bluetooth settings</li>
+            <li>Click connect button below</li>
+            <li>Select the Hioki device and click open. The app will now attempt to make a serial connection with the
+              Hioki device.</li>
+            <li>Click the send button to send a few messages</li>
+            <li>Inspect response content in the text area below</li>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" id="connect-to-serial-button">Connect</button>
+          <label for="formFile" class="form-label" id="port-opened-notification"></label>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-secondary" id="send-message-button" disabled>Send messages</button>
+        </div>
+        <div class="form-group">
+          <textarea style="font-size:13px;" class="form-control" id="output" rows="15"
+            placeholder="Your log content will show up here" readonly></textarea>
+        </div>
+        <div class="alert alert-primary" role="alert">
+          Supported browsers*: Chrome >= 89, Edge >= 89 and Opera >= 75.<br>
+        </div>
+        <div>
+          <small>
+            *Web Serial API is used to read and write data to a serial port. More info: <a
+              href="https://web.dev/serial/" target="_blank"
+              rel="external">https://web.dev/serial/</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./dist/serial-handler.js" type="module"></script>
+  <script src="./dist/app.js" type="module"></script>
+</body>
+
+</html>
